@@ -1,23 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { TestFile } from "./components/TestFIle";
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import About from "./components/About";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import Profile from "./components/Profile";
+import { MainComp } from "./utils/RootReducer";
+import Header from "./components/Header";
+import Infinite from "./components/Infinite";
+import Accordian from "./components/Accordian";
+import NestedComments from "./components/NestedComments";
+import ImageSlider from "./components/ImageSlider";
+import Pagination from "./components/Pagination";
+import LiveChat from "./components/livechat/LiveChat";
 
 function App() {
+  const [lang, setLang] = useState("en");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      {/* <TestFile /> */}
+      <section
+        style={{
+          backgroundColor: "tomato",
+          color: "white",
+          padding: "10px",
+          textAlign: "center",
+        }}
+      >
+        <h1>This is a staic Header</h1>
+        <select
+          onChange={(e) => {
+            setLang(e.target.value);
+          }}
+          value={lang}
         >
-          Learn React
-        </a>
-      </header>
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="hi">Hindi</option>
+          <option value="ru">Russian</option>
+        </select>
+      </section>
+      {/* <MainComp /> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<div>home page</div>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/livechat" element={<LiveChat />} />
+          <Route path="/infinite" element={<Infinite />} />
+          <Route path="/about" element={<About lang={lang} />} />
+          <Route path="/pagination" element={<Pagination />} />
+          <Route path="/accordian" element={<Accordian />} />
+          <Route path="/nestedcomments" element={<NestedComments />} />
+          <Route path="/imageslider" element={<ImageSlider />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
