@@ -25,18 +25,18 @@ const ImageSlider = () => {
     if (active > 0) {
       setActive(active - 1);
     }
-    if (active === 0) {
-      setActive(data.length - 1);
-    }
+    // if (active === 0) {
+    //   setActive(data.length - 1);
+    // }
   };
 
   const clickRight = () => {
     if (active < data.length - 1) {
       setActive(active + 1);
     }
-    if (active === data.length - 1) {
-      setActive(0);
-    }
+    // if (active === data.length - 1) {
+    //   setActive(0);
+    // }
   };
   return (
     <div

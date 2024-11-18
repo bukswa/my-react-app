@@ -15,6 +15,8 @@ import NestedComments from "./components/NestedComments";
 import ImageSlider from "./components/ImageSlider";
 import Pagination from "./components/Pagination";
 import LiveChat from "./components/livechat/LiveChat";
+import SearchUi from "./components/search-ui/SearchUi";
+import PaginationCopy from "./components/ssr";
 
 function App() {
   const [lang, setLang] = useState("en");
@@ -51,9 +53,11 @@ function App() {
           <Route path="/infinite" element={<Infinite />} />
           <Route path="/about" element={<About lang={lang} />} />
           <Route path="/pagination" element={<Pagination />} />
+          <Route path="/paginationcopy" element={<PaginationCopy />} />
           <Route path="/accordian" element={<Accordian />} />
           <Route path="/nestedcomments" element={<NestedComments />} />
           <Route path="/imageslider" element={<ImageSlider />} />
+          <Route path="/searchui" element={<SearchUi />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/profile" element={<Profile />} />
           </Route>

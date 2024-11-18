@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { renderToString } from "react-dom/server";
 
 const LIMIT = 10;
 
-const Pagination = () => {
+const PaginationCopy = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [noOfPages, setNoOfPages] = useState(0);
@@ -48,6 +49,7 @@ const Pagination = () => {
                 style={{ background: currentPage === item && "gray" }}
                 onClick={(e) => {
                   console.log(e.isPropagationStopped());
+                  console.log(e.isPropagationStopped());
                   setCurrentPage(item);
                 }}
               >
@@ -80,4 +82,4 @@ const Pagination = () => {
   );
 };
 
-export default Pagination;
+export default renderToString(PaginationCopy);
